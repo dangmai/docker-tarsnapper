@@ -1,0 +1,20 @@
+FROM atmoz/tarsnap
+MAINTAINER Dang Mai <contact@dangmai.net>
+
+ENV TARSNAPPER_VERSION 0.3.0
+
+RUN apt-get -q update && apt-get install -qy \
+        python-pip \
+        cron \
+    && pip install tarsnapper==$TARSNAPPER_VERSION \
+    && apt-get autoremove -y \
+    && apt-get clean all \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ADD tarsnapper.conf /etc/tarsnapper.conf
+ADD tarsnapper-backup.sh /tarsnapper-backup.sh
+ADD tarsnapper-expire.sh /tarsnapper-expire.sh
+ADD start.sh /start.sh
+RUN chmod u+x /tarsnapper-backup.sh /tarsnapper-expire.sh /start.sh
+
+CMD /start.sh
