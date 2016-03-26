@@ -24,7 +24,8 @@ docker run -d \
     dangmai/tarsnapper
 ```
 
-* Parameters
+Parameters
+----------
 
 - `-v /backup` - The directory containing the data to back up
 - `-v /tarsnap/key` - The private Tarsnap key
