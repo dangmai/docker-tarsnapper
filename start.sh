@@ -15,9 +15,6 @@ $EXPIRE_CRON root /tarsnapper-expire.sh >> /var/log/cron.log 2>&1
 
 EOF
 
-[ -n "$JOB_NAME" ] && sed -i "s/mybackup/$JOB_NAME/" /etc/tarsnapper.conf
-[ -n "$DELTA" ] && sed -i "s/1d 7d 30d/$DELTA/" /etc/tarsnapper.conf
-
 chmod 0644 /etc/cron.d/tarsnapper
 touch /var/log/cron.log
 

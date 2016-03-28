@@ -19,8 +19,6 @@ docker run -d \
     -e "EXPIRE_CRON=10 0 * * *" \
     -e "BACKUP_COMMAND=-o v -c /etc/tarsnapper.conf make" \
     -e "EXPIRE_COMMAND=-o v -c /etc/tarsnapper.conf expire" \
-    -e "JOB_NAME=<back up name>" \
-    -e "DELTA=1d 7d 30d 360d 18000d" \
     dangmai/tarsnapper
 ```
 
@@ -40,11 +38,9 @@ so as not to stress Tarsnap server at once
 If not specified, this defaults to `-c /etc/tarsnapper.conf make`
 - `-e EXPIRE_COMMAND` - The expire command to use for Tarsnapper.
 If not specified, this defaults to `-c /etc/tarsnapper.conf expire`
-- `-e JOB_NAME` - The back up job name. This defaults to `mybackup`
-- `-e DELTA` - The delta to use for Tarsnapper.
-If not specified, this defaults to `1d 7d 30d`
 
 You can use these parameters for simple Tarsnapper backup/expiration.
+By default, the deltas is `1d 7d 30d`, and the job name is `mybackup`.
 Of course, if you need more customizations for Tarsnapper,
 you can always mount your own Tarsnapper config file to `/etc/tarsnapper.conf`.
 
