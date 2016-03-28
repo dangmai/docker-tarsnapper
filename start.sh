@@ -11,8 +11,6 @@ EXPIRE_CRON=${EXPIRE_CRON:-"$RANDOM_EXPIRE_MINUTE $RANDOM_EXPIRE_HOUR * * *"}
 
 cat << EOF > /etc/cron.d/tarsnapper
 $BACKUP_CRON root /tarsnapper-backup.sh >> /var/log/cron.log 2>&1
-EOF
-cat << EOF >> /etc/cron.d/tarsnapper
 $EXPIRE_CRON root /tarsnapper-expire.sh >> /var/log/cron.log 2>&1
 
 EOF
