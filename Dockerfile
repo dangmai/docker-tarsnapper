@@ -1,7 +1,7 @@
 FROM atmoz/tarsnap
 MAINTAINER Dang Mai <contact@dangmai.net>
 
-ENV TARSNAPPER_VERSION 0.3.0
+ENV TARSNAPPER_VERSION 0.4.0
 
 RUN apt-get -q update && apt-get install -qy \
         python-pip \
