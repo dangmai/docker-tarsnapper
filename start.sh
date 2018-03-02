@@ -9,6 +9,9 @@ RANDOM_EXPIRE_MINUTE=`shuf -i 1-59 -n 1`
 BACKUP_CRON=${BACKUP_CRON:-"$RANDOM_BACKUP_MINUTE $RANDOM_BACKUP_HOUR * * *"}
 EXPIRE_CRON=${EXPIRE_CRON:-"$RANDOM_EXPIRE_MINUTE $RANDOM_EXPIRE_HOUR * * *"}
 
+# Cron doesn't save ENV to be injected into the cron job that doesn't preserve ENV
+printenv > /etc/environment
+
 cat << EOF > /etc/cron.d/tarsnapper
 $BACKUP_CRON root /tarsnapper-backup.sh >> /var/log/cron.log 2>&1
 $EXPIRE_CRON root /tarsnapper-expire.sh >> /var/log/cron.log 2>&1
