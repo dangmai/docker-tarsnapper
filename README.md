@@ -16,9 +16,7 @@ docker run -d \
     -v <location of tarsnap key>:/tarsnap/key:ro \
     -v /etc/localtime:/etc/localtime:ro \
     -e "BACKUP_CRON=0 0 * * *" \
-    -e "EXPIRE_CRON=10 0 * * *" \
     -e "BACKUP_COMMAND=-o v -c /etc/tarsnapper.conf make" \
-    -e "EXPIRE_COMMAND=-o v -c /etc/tarsnapper.conf expire" \
     dangmai/tarsnapper
 ```
 
@@ -31,13 +29,8 @@ Parameters
 - `-e BACKUP_CRON` - The cron expression to describe when the backup job runs.
 If not specified, this defaults to a random time daily,
 so as not to stress Tarsnap server at once
-- `-e EXPIRE_CRON` - The cron expression to describe when the expire job runs.
-If not specified, this defaults to a random time daily,
-so as not to stress Tarsnap server at once
 - `-e BACKUP_COMMAND` - The back up command to use for Tarsnapper.
 If not specified, this defaults to `-c /etc/tarsnapper.conf make`
-- `-e EXPIRE_COMMAND` - The expire command to use for Tarsnapper.
-If not specified, this defaults to `-c /etc/tarsnapper.conf expire`
 
 You can use these parameters for simple Tarsnapper backup/expiration.
 By default, the deltas is `1d 7d 30d`, and the job name is `mybackup`.

@@ -13,8 +13,7 @@ RUN apt-get -q update && apt-get install -qy \
 
 ADD tarsnapper.conf /etc/tarsnapper.conf
 ADD tarsnapper-backup.sh /tarsnapper-backup.sh
-ADD tarsnapper-expire.sh /tarsnapper-expire.sh
 ADD start.sh /start.sh
-RUN chmod u+x /tarsnapper-backup.sh /tarsnapper-expire.sh /start.sh
+RUN chmod u+x /tarsnapper-backup.sh /start.sh
 
 CMD /start.sh
