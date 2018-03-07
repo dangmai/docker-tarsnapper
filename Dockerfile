@@ -1,5 +1,5 @@
 FROM atmoz/tarsnap
-MAINTAINER Dang Mai <contact@dangmai.net>
+LABEL maintainer="Dang Mai <contact@dangmai.net>"
 
 ENV TARSNAPPER_VERSION 0.4.0
 
