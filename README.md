@@ -43,6 +43,12 @@ This is done in order to keep Tarsnap cache up to date,
 no matter when you run the Docker container.
 However, the downside is that it'll incur a small charge for the metadata download.
 
+*Note*: Be careful if you want to use environmental variables inside `/etc/tarsnapper.conf`.
+By default, `cron` sets up a minimal environment for each command it runs,
+so the environmental variables will not show up in `exec-before` or `exec-after`.
+You can work around it by creating a custom entry point,
+and dump the needed variables into `/etc/environment` for them to be picked up by `cron`.
+
 Restore
 -------
 
